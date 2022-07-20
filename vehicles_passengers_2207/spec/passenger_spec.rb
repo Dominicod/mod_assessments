@@ -1,12 +1,11 @@
 require './lib/passenger'
 
 RSpec.describe Passenger do
+    before(:all) do
+        @charlie = Passenger.new({"name" => "Charlie", "age" => 18}) 
+        @taylor = Passenger.new({"name" => "Taylor", "age" => 12})
+    end
     describe ".passenger_initialize" do
-        before(:each) do
-            @charlie = Passenger.new({"name" => "Charlie", "age" => 18}) 
-            @taylor = Passenger.new({"name" => "Taylor", "age" => 12})
-        end
-
         context "passenger object is instance of class" do
             it 'exists' do
                 expect(@charlie).to be_an_instance_of(Passenger)
@@ -25,7 +24,8 @@ RSpec.describe Passenger do
                 expect(@taylor.age).to eq(12)
             end
         end
-
+    end
+    describe ".adult?" do
         context "returns boolean if method adult? is executed" do
             it 'returns true for @charlie' do
                 expect(@charlie.adult?).to eq(true)
@@ -35,7 +35,8 @@ RSpec.describe Passenger do
                 expect(@taylor.adult?).to eq(false)
             end
         end
-
+    end
+    describe ".driver?" do
         context "returns boolean for driver? allow reassigning of driver?" do
             it 'returns false, nobody is driving' do
                 expect(@charlie.driver?).to eq(false)
