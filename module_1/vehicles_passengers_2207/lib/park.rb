@@ -18,7 +18,7 @@ class Park
     end
 
     def calculate_revenue 
-        @vehicles.map {|vehicle| vehicle.passengers.find_all {|passenger| passenger.adult? }.count * 20}.sum
+        @vehicles.map {|vehicle| vehicle.passengers.find_all {|passenger| passenger.adult? }.count * @admission}.sum
     end
 
     def revenue_by_vehicle
