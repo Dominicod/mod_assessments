@@ -18,8 +18,8 @@ class GradeBook
   end
 
   def students_by_grade(grade)
-    students = students().map do |course|
+    students = students().flat_map do |course|
       course[1].find_all {|student| student.grade < grade}
-    end.flatten
+    end
   end
 end
